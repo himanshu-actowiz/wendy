@@ -50,13 +50,12 @@ def parsel_data(html_data):
     d_partner = tree.xpath('//a[contains(@class,"LocationInfo-deliveryPartnerLink")]')
     for partner in d_partner:
         link = partner.xpath('normalize-space(.//@href)')
-        if link and link not in wendy_s['delivery_partners']:
-            wendy_s['delivery_partners'].append(link)
+        wendy_s['delivery_partners'].append(link)
 
 
-    wendy_s['restaurant_hours'] = json.dumps(wendy_s['restaurant_hours'], ensure_ascii=False)
-    wendy_s['Amenities'] = json.dumps(wendy_s['Amenities'], ensure_ascii=False)
-    wendy_s['delivery_partners'] = json.dumps(wendy_s['delivery_partners'], ensure_ascii=False)
+    wendy_s['restaurant_hours'] = json.dumps(wendy_s['restaurant_hours'])
+    wendy_s['Amenities'] = json.dumps(wendy_s['Amenities'])
+    wendy_s['delivery_partners'] = json.dumps(wendy_s['delivery_partners'])
 
     wendy.append(wendy_s)
     return wendy
